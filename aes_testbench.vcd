@@ -1,0 +1,674 @@
+$date
+	Sat Dec 07 15:35:39 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module aes_testbench $end
+$var wire 4 ! round [3:0] $end
+$var wire 128 " cypherText [127:0] $end
+$var reg 128 # aes_key [127:0] $end
+$var reg 1 $ clk $end
+$var reg 128 % data [127:0] $end
+$var reg 1 & reset_signal $end
+$var reg 1 ' start $end
+$scope module cp_inst $end
+$var wire 1 $ clk $end
+$var wire 128 ( data [0:127] $end
+$var wire 128 ) key [0:127] $end
+$var wire 1 & reset $end
+$var wire 1 ' start $end
+$var wire 128 * keyExpansionOut [0:127] $end
+$var wire 128 + datapath_out [0:127] $end
+$var reg 128 , currentKey [0:127] $end
+$var reg 128 - cypherText [0:127] $end
+$var reg 128 . data_in [0:127] $end
+$var reg 1 / expanEn $end
+$var reg 4 0 round [0:3] $end
+$var reg 128 1 roundKey [0:127] $end
+$scope module datapath_inst $end
+$var wire 128 2 data_in [0:127] $end
+$var wire 1 & reset $end
+$var wire 4 3 round [0:3] $end
+$var wire 128 4 roundKey [0:127] $end
+$var wire 128 5 shiftRowsOut [0:127] $end
+$var wire 128 6 mixColOut [0:127] $end
+$var wire 128 7 keyAddOut [0:127] $end
+$var wire 128 8 byteSubOut [0:127] $end
+$var reg 128 9 byteSubIn [0:127] $end
+$var reg 128 : data_out [0:127] $end
+$var reg 1 ; enBS $end
+$var reg 128 < keyAddData_in [0:127] $end
+$var reg 1 = keyAddEn $end
+$var reg 128 > keyAddKey_In [0:127] $end
+$var reg 128 ? mixColIn [0:127] $end
+$var reg 1 @ mixEn $end
+$var reg 1 A shiftEn $end
+$var reg 128 B shiftRowsIn [0:127] $end
+$scope module BS_inst $end
+$var wire 1 ; enBS $end
+$var wire 128 C in [127:0] $end
+$var wire 1 & reset $end
+$var wire 128 D bs_out [127:0] $end
+$var reg 128 E byteSubOut [127:0] $end
+$scope module s0 $end
+$var wire 32 F in [0:31] $end
+$var wire 32 G out [0:31] $end
+$scope begin genblk1[7] $end
+$var parameter 4 H i $end
+$scope module s $end
+$var wire 8 I in [0:7] $end
+$var reg 8 J out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[15] $end
+$var parameter 5 K i $end
+$scope module s $end
+$var wire 8 L in [0:7] $end
+$var reg 8 M out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[23] $end
+$var parameter 6 N i $end
+$scope module s $end
+$var wire 8 O in [0:7] $end
+$var reg 8 P out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[31] $end
+$var parameter 6 Q i $end
+$scope module s $end
+$var wire 8 R in [0:7] $end
+$var reg 8 S out [0:7] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module s1 $end
+$var wire 32 T in [0:31] $end
+$var wire 32 U out [0:31] $end
+$scope begin genblk1[7] $end
+$var parameter 4 V i $end
+$scope module s $end
+$var wire 8 W in [0:7] $end
+$var reg 8 X out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[15] $end
+$var parameter 5 Y i $end
+$scope module s $end
+$var wire 8 Z in [0:7] $end
+$var reg 8 [ out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[23] $end
+$var parameter 6 \ i $end
+$scope module s $end
+$var wire 8 ] in [0:7] $end
+$var reg 8 ^ out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[31] $end
+$var parameter 6 _ i $end
+$scope module s $end
+$var wire 8 ` in [0:7] $end
+$var reg 8 a out [0:7] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module s2 $end
+$var wire 32 b in [0:31] $end
+$var wire 32 c out [0:31] $end
+$scope begin genblk1[7] $end
+$var parameter 4 d i $end
+$scope module s $end
+$var wire 8 e in [0:7] $end
+$var reg 8 f out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[15] $end
+$var parameter 5 g i $end
+$scope module s $end
+$var wire 8 h in [0:7] $end
+$var reg 8 i out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[23] $end
+$var parameter 6 j i $end
+$scope module s $end
+$var wire 8 k in [0:7] $end
+$var reg 8 l out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[31] $end
+$var parameter 6 m i $end
+$scope module s $end
+$var wire 8 n in [0:7] $end
+$var reg 8 o out [0:7] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module s3 $end
+$var wire 32 p in [0:31] $end
+$var wire 32 q out [0:31] $end
+$scope begin genblk1[7] $end
+$var parameter 4 r i $end
+$scope module s $end
+$var wire 8 s in [0:7] $end
+$var reg 8 t out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[15] $end
+$var parameter 5 u i $end
+$scope module s $end
+$var wire 8 v in [0:7] $end
+$var reg 8 w out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[23] $end
+$var parameter 6 x i $end
+$scope module s $end
+$var wire 8 y in [0:7] $end
+$var reg 8 z out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[31] $end
+$var parameter 6 { i $end
+$scope module s $end
+$var wire 8 | in [0:7] $end
+$var reg 8 } out [0:7] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module keyAdd_inst $end
+$var wire 128 ~ in [0:127] $end
+$var wire 128 !" key [0:127] $end
+$var wire 1 = keyAddEn $end
+$var wire 1 & reset $end
+$var reg 128 "" keyAddOut [0:127] $end
+$upscope $end
+$scope module mixCol_inst $end
+$var wire 128 #" in [0:127] $end
+$var wire 1 @ mixEn $end
+$var wire 1 & reset $end
+$var wire 4 $" round [3:0] $end
+$var reg 128 %" mixColOut [0:127] $end
+$scope function mulThree $end
+$var reg 8 &" x [7:0] $end
+$upscope $end
+$scope function mulTwo $end
+$var reg 8 '" x [7:0] $end
+$upscope $end
+$scope begin name $end
+$var integer 32 (" i [31:0] $end
+$upscope $end
+$upscope $end
+$scope module shiftRows_inst $end
+$var wire 128 )" in [0:127] $end
+$var wire 1 & reset $end
+$var wire 1 A shiftEn $end
+$var reg 128 *" shiftRowsOut [0:127] $end
+$upscope $end
+$upscope $end
+$scope module keyExpansion_inst $end
+$var wire 1 $ clk $end
+$var wire 128 +" currentKey [0:127] $end
+$var wire 1 / expanEn $end
+$var wire 1 & reset $end
+$var wire 4 ," round [3:0] $end
+$var wire 32 -" sub_circ [0:31] $end
+$var wire 4 ." round_corr [3:0] $end
+$var wire 32 /" rc [0:31] $end
+$var wire 32 0" circ [0:31] $end
+$var reg 128 1" keyExpansionOut [0:127] $end
+$scope module bs $end
+$var wire 32 2" in [0:31] $end
+$var wire 32 3" out [0:31] $end
+$scope begin genblk1[7] $end
+$var parameter 4 4" i $end
+$scope module s $end
+$var wire 8 5" in [0:7] $end
+$var reg 8 6" out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[15] $end
+$var parameter 5 7" i $end
+$scope module s $end
+$var wire 8 8" in [0:7] $end
+$var reg 8 9" out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[23] $end
+$var parameter 6 :" i $end
+$scope module s $end
+$var wire 8 ;" in [0:7] $end
+$var reg 8 <" out [0:7] $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[31] $end
+$var parameter 6 =" i $end
+$scope module s $end
+$var wire 8 >" in [0:7] $end
+$var reg 8 ?" out [0:7] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module rcoeff $end
+$var wire 4 @" r [3:0] $end
+$var reg 32 A" cf [0:31] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b11111 ="
+b10111 :"
+b1111 7"
+b111 4"
+b11111 {
+b10111 x
+b1111 u
+b111 r
+b11111 m
+b10111 j
+b1111 g
+b111 d
+b11111 _
+b10111 \
+b1111 Y
+b111 V
+b11111 Q
+b10111 N
+b1111 K
+b111 H
+$end
+#0
+$dumpvars
+bx A"
+bx @"
+bx ?"
+bx >"
+bx <"
+bx ;"
+bx 9"
+bx 8"
+bx 6"
+bx 5"
+bx 3"
+bx 2"
+bx 1"
+bx 0"
+bx /"
+bx ."
+bx -"
+bx ,"
+bx +"
+bx *"
+bx )"
+bx ("
+bx '"
+bx &"
+bx %"
+bx $"
+bx #"
+bx ""
+bx !"
+bx ~
+bx }
+bx |
+bx z
+bx y
+bx w
+bx v
+bx t
+bx s
+bx q
+bx p
+bx o
+bx n
+bx l
+bx k
+bx i
+bx h
+bx f
+bx e
+bx c
+bx b
+bx a
+bx `
+bx ^
+bx ]
+bx [
+bx Z
+bx X
+bx W
+bx U
+bx T
+bx S
+bx R
+bx P
+bx O
+bx M
+bx L
+bx J
+bx I
+bx G
+bx F
+bx E
+bx D
+bx C
+bx B
+0A
+0@
+bx ?
+bx >
+0=
+bx <
+0;
+bx :
+bx 9
+bx 8
+bx 7
+bx 6
+bx 5
+bx 4
+bx 3
+bx 2
+bx 1
+bx 0
+0/
+bx .
+bx -
+bx ,
+bx +
+bx *
+bx )
+bx (
+0'
+0&
+bx %
+0$
+bx #
+bx "
+bx !
+$end
+#5000
+b1100011 <"
+b1100011 9"
+b1100011 6"
+b1100011011000110110001101100011 -"
+b1100011011000110110001101100011 3"
+b1100011 ?"
+b0 ;"
+b0 8"
+b0 5"
+b0 >"
+b0 0"
+b0 2"
+b1000000000000000000000000 /"
+b1000000000000000000000000 A"
+b0 +
+b0 :
+b0 "
+b0 -
+b0 ,
+b0 +"
+b0 1
+b0 4
+b0 .
+b0 2
+b1 ."
+b1 @"
+b0 !
+b0 0
+b0 3
+b0 $"
+b0 ,"
+1'
+1$
+#10000
+0$
+#15000
+b0 <"
+b0 9"
+b0 6"
+b0 -"
+b0 3"
+b0 ?"
+bx ;"
+bx 8"
+bx 5"
+bx >"
+b100 ("
+b10000000000000000000000000 /"
+b10000000000000000000000000 A"
+bx 0"
+bx 2"
+bx +
+bx :
+1=
+1@
+1A
+1;
+b10 ."
+b10 @"
+b1 !
+b1 0
+b1 3
+b1 $"
+b1 ,"
+1/
+bx 1
+bx 4
+bx ,
+bx +"
+bx .
+bx 2
+1$
+0'
+#16000
+b110010010000111111011010101000100010000101101000110000100011010011000100110001100110001010001011100000001101110000011100110100 %
+b110010010000111111011010101000100010000101101000110000100011010011000100110001100110001010001011100000001101110000011100110100 (
+#17000
+b101011011111100001010100010110001010001010111011010010101001101010101111110111000101011000100000001001110011110100111100111100 #
+b101011011111100001010100010110001010001010111011010010101001101010101111110111000101011000100000001001110011110100111100111100 )
+#20000
+0$
+#25000
+b100 ("
+b100000000000000000000000000 /"
+b100000000000000000000000000 A"
+bx +
+bx :
+1@
+1A
+1;
+1=
+b11 ."
+b11 @"
+b10 !
+b10 0
+b10 3
+b10 $"
+b10 ,"
+1$
+#30000
+0$
+#35000
+b100 ("
+b1000000000000000000000000000 /"
+b1000000000000000000000000000 A"
+bx +
+bx :
+1@
+1A
+1;
+1=
+b100 ."
+b100 @"
+b11 !
+b11 0
+b11 3
+b11 $"
+b11 ,"
+1$
+#40000
+0$
+#45000
+b100 ("
+b10000000000000000000000000000 /"
+b10000000000000000000000000000 A"
+bx +
+bx :
+1@
+1A
+1;
+1=
+b101 ."
+b101 @"
+b100 !
+b100 0
+b100 3
+b100 $"
+b100 ,"
+1$
+#50000
+0$
+#55000
+b100 ("
+b100000000000000000000000000000 /"
+b100000000000000000000000000000 A"
+bx +
+bx :
+1@
+1A
+1;
+1=
+b110 ."
+b110 @"
+b101 !
+b101 0
+b101 3
+b101 $"
+b101 ,"
+1$
+#60000
+0$
+#65000
+b100 ("
+b1000000000000000000000000000000 /"
+b1000000000000000000000000000000 A"
+bx +
+bx :
+1@
+1A
+1;
+1=
+b111 ."
+b111 @"
+b110 !
+b110 0
+b110 3
+b110 $"
+b110 ,"
+1$
+#70000
+0$
+#75000
+b100 ("
+b10000000000000000000000000000000 /"
+b10000000000000000000000000000000 A"
+bx +
+bx :
+1@
+1A
+1;
+1=
+b1000 ."
+b1000 @"
+b111 !
+b111 0
+b111 3
+b111 $"
+b111 ,"
+1$
+#80000
+0$
+#85000
+b100 ("
+b11011000000000000000000000000 /"
+b11011000000000000000000000000 A"
+bx +
+bx :
+1@
+1A
+1;
+1=
+b1001 ."
+b1001 @"
+b1000 !
+b1000 0
+b1000 3
+b1000 $"
+b1000 ,"
+1$
+#90000
+0$
+#95000
+b100 ("
+b110110000000000000000000000000 /"
+b110110000000000000000000000000 A"
+bx +
+bx :
+1@
+1A
+1;
+1=
+b1010 ."
+b1010 @"
+b1001 !
+b1001 0
+b1001 3
+b1001 $"
+b1001 ,"
+1$
+#100000
+0$
+#105000
+b0 /"
+b0 A"
+bx +
+bx :
+0@
+1A
+1;
+1=
+b1011 ."
+b1011 @"
+b1010 !
+b1010 0
+b1010 3
+b1010 $"
+b1010 ,"
+1$
+#110000
+0$
+#115000
+0/
+bx "
+bx -
+1$
+#120000
+0$
+#125000
+1$
+#130000
+0$
+#135000
+1$
+#137000
