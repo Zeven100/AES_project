@@ -1,7 +1,7 @@
 
 
 module round_cf(
-input [3:0] r,
+input [0:3] r,
 output reg [0:31] cf  
 );
 
