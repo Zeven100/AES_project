@@ -27,23 +27,19 @@ cd /path/to/your/desired/folder
 ```
 Clone the repository using Git:
 ```bash
-git clone <repository_url>
-```
-Replace `<repository_url>` with the actual URL of this GitHub repository. For example:
-```bash
-git clone https://github.com/your-username/aes-verilog.git
+git clone https://github.com/Zeven100/AES_project.git
 ```
 
 Navigate into the cloned directory:
 ```bash
-cd aes-verilog
+cd AES_project
 ```
 
 ---
 
 ### 2. Compile the Testbench
 
-The testbench file (e.g., `tb.v`) simulates the AES design. Compile it using the following command:
+The testbench file simulates the AES design. Compile it using the following command:
 ```bash
 iverilog -o sim tb.v
 ```
@@ -58,7 +54,7 @@ Run the compiled simulation file using:
 ```bash
 vvp sim
 ```
-This generates a `.vcd` (Value Change Dump) file (e.g., `tb.vcd`) containing waveform data for the simulation.
+This generates a `.vcd` (Value Change Dump) file (here , `tb.vcd`) containing waveform data for the simulation.
 
 ---
 
@@ -69,14 +65,6 @@ Open the waveform file in GTKWave to analyze the signal transitions:
 gtkwave tb.vcd
 ```
 Use the GUI to add signals to the waveform viewer and verify the design.
-
----
-
-## Project Structure
-
-- `src/`: Contains the Verilog source files for AES modules (e.g., `key_expansion`, `mix_columns`, `byte_substitution`, etc.).
-- `tb.v`: Testbench for verifying the AES design.
-- `Makefile` (optional): If provided, simplifies the compilation and simulation process.
 
 ---
 
