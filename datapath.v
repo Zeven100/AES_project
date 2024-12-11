@@ -1,9 +1,6 @@
 `include "keyAdd.v"
 `include "mixCol.v"
 `include "shiftRows.v"
-`include "mux.v"
-`include "reg_key.v"
-`include "reg_data.v"
 `include "BS.v"
 
 module datapath ( // datapath dp(.round() , .reset() , .roundkey() , .data_in() , .data_out())
