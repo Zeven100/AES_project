@@ -1,24 +1,23 @@
-module mixCol ( // mixCol mixCol_inst (.mixEn(mixEn) , .reset(reset) , .round(round) , .in(mixColIn) , .mixColOut(mixColOut))
-    input mixEn , reset,
-    input [3:0] round,
+module mixCol ( // mixCol mixCol_inst ( .reset(reset) ,  .in(mixColIn) , .mixColOut(mixColOut))
+    input reset,
     input [0:127] in,
     output reg [0:127] mixColOut
 );
-
+     integer i;
     always @(*) begin
         if (reset) 
             mixColOut <= 128'b0;
         else begin
-            if (mixEn && round < 9) begin : name
-                integer i;
+           
+                
                 for (i = 0; i < 4; i = i + 1) begin
                     mixColOut[32 * i +: 8]     <= mulTwo(in[32*i +: 8]) ^ mulThree(in[32*i + 8 +: 8]) ^ in[32*i + 16 +: 8] ^ in[32*i + 24 +: 8];
                     mixColOut[32 * i + 8 +: 8] <= in[32*i +: 8] ^ mulTwo(in[32*i + 8 +: 8]) ^ mulThree(in[32*i + 16 +: 8]) ^ in[32*i + 24 +: 8];
                     mixColOut[32 * i + 16 +: 8] <= in[32*i +: 8] ^ in[32*i + 8 +: 8] ^ mulTwo(in[32*i + 16 +: 8]) ^ mulThree(in[32*i + 24 +: 8]);
                     mixColOut[32 * i + 24 +: 8] <= mulThree(in[32*i +: 8]) ^ in[32*i + 8 +: 8] ^ in[32*i + 16 +: 8] ^ mulTwo(in[32*i + 24 +: 8]);
-                end
+               
             end
-            else mixColOut <= in ;
+            
         end
     end
 

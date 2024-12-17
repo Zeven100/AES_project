@@ -1,61 +1,41 @@
+`ifndef KEYEXPAN_V
+`define KEYEXPAN_V
+
 `include "byteSub.v"
 `include "round_cf.v"
-
-module keyExpan ( // ( .expanEn() , .reset() , .clk() , .round() , .inputKey() , .roundKey() ) ;
-    input expanEn,    // Enable signal for expansion
-    input reset,      // Reset signal
-    input clk,        // Clock signal
-    input [0:3] round,   // Round number
-    input [0:127] inputKey,  // Initial input key
-    output reg [0:127] roundKey , // Output the current round key,
-    output reg[0:127]nextRoundKey
+module keyExpan ( // keyExpan KE_inst(.key_reg_filled() , .initial_key() , .key_reg()) ;
+    input [0:127] initial_key,     // Input: Initial 128-bit key
+    output [0:1407] key_reg        // Output: Expanded round keys (11 x 128 = 1408 bits)
 );
 
-    reg [0:127] currentKey;  // Store the current key
-    reg [0:127] newKey;      // Store the newly calculated key
-    wire [0:31] circ;        // Temporary register for word rotation
-    wire [0:31] sub_circ;    // Output of byte substitution
-    wire [0:31] rc;          // Round constant
-     reg [0:3] i = 4'b0001 ;
-    // Calculate the rotated word and use byte substitution and round constant calculation
-    assign circ = {currentKey[104 +: 24], currentKey[96 +: 8]}; // Rotate last word
-    byteSub bs(.in(circ), .out(sub_circ)); // Perform byte substitution
-    round_cf rcoeff(.r(i), .cf(rc)); // Get round constant based on round
+   
+    wire [0:31] circ [1:10];
+    wire [0:31] sub_circ [1:10];
+    wire [0:31] rc [1:10];
+    wire [0:3] round_num [1:10];
 
-    // Initialize roundKey and currentKey
-    always @(inputKey) begin
-        roundKey = inputKey;
-        currentKey = inputKey;
-    end
+    // Reverse the bits of the initial key
+    genvar i;
 
-    // Handle round logic
-    always @(round) begin
-        if (reset) begin
-            currentKey = 0;
-            newKey = 0;
-            roundKey = 0;
-        end else if (expanEn) begin
-            if (round == 0) begin
-                roundKey = inputKey; // At round 0, the round key is the input key
-            end else if (round >= 1 && round <= 10) begin
-                roundKey = newKey; // For subsequent rounds, use the newKey
-            end
+
+    // Initial key assignment with the reversed key
+    assign key_reg[0 +: 128] = initial_key;
+
+    // Assign round numbers and generate the round keys
+    generate
+        for (i = 1; i <= 10; i = i + 1) begin : round_constants
+            assign round_num[i] = i; // 4-bit round number
+            assign circ[i] = {key_reg[(i-1)*128 + 104 +: 24], key_reg[(i-1)*128 + 96 +: 8]}; // RotWord
+            byteSub bs(.in(circ[i]), .out(sub_circ[i]));                                     // SubWord
+            round_cf rcoeff(.r(round_num[i]), .cf(rc[i]));                                   // Round constant
+
+            // Generate 128-bit round keys
+            assign key_reg[i*128 + 0 +: 32]   = key_reg[(i-1)*128 + 0 +: 32] ^ sub_circ[i] ^ rc[i]; // First word
+            assign key_reg[i*128 + 32 +: 32]  = key_reg[(i-1)*128 + 32 +: 32] ^ key_reg[i*128 + 0 +: 32]; // Second word
+            assign key_reg[i*128 + 64 +: 32]  = key_reg[(i-1)*128 + 64 +: 32] ^ key_reg[i*128 + 32 +: 32]; // Third word
+            assign key_reg[i*128 + 96 +: 32]  = key_reg[(i-1)*128 + 96 +: 32] ^ key_reg[i*128 + 64 +: 32]; // Fourth word
         end
-    end
+    endgenerate
 
-    // Calculate new key on negative clock edge
-    always @(negedge clk) begin
-        if (expanEn && round <= 10) begin
-            // Compute the new round key based on the AES key expansion formula
-            newKey[0 +: 32] = currentKey[0 +: 32] ^ sub_circ ^ rc; // First word
-            newKey[32 +: 32] = currentKey[32 +: 32] ^ newKey[0 +: 32]; // Second word
-            newKey[64 +: 32] = currentKey[64 +: 32] ^ newKey[32 +: 32]; // Third word
-            newKey[96 +: 32] = currentKey[96 +: 32] ^ newKey[64 +: 32]; // Fourth word
-
-            // Update currentKey for the next round
-            currentKey = newKey;
-            nextRoundKey = newKey ;
-            i <= i + 1 ;
-        end
-    end
 endmodule
+`endif 

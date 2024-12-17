@@ -3,13 +3,13 @@
 
 `include "sbox.v"
 module byteSub (
-     input [0:31] in ,
-     output  [0:31] out
+     input [31:0] in ,
+     output  [31:0] out
 );
 genvar i ;
 generate
-     for(i = 31 ; i >0 ; i = i - 8 )begin
-          sbox s(.in(in[i -: 8]) , .out(out[i -: 8])) ;
+     for(i = 0 ; i <32 ; i = i + 8 )begin
+          sbox s(.in(in[i +: 8]) , .out(out[i +: 8])) ;
      end
 endgenerate
 

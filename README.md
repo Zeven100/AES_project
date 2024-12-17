@@ -76,3 +76,5 @@ Use the GUI to add signals to the waveform viewer and verify the design.
 ---
 
 Feel free to contribute to this project by submitting issues or pull requests!
+## About AES
+Visit this link to learn more about AES ( Advanced Encryption Standard ) -> https://grass-heath-fad.notion.site/Advanced-Encryption-Standard-using-Verilog-15921e3f0ace8050b305e117d39b0f05

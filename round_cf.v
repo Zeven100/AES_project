@@ -1,5 +1,5 @@
-
-
+`ifndef ROUND_CF_V
+`define ROUND_CF_V
 module round_cf(
 input [0:3] r,
 output reg [0:31] cf  
@@ -20,3 +20,4 @@ always @(*)
     default: cf=32'h00000000;
   endcase
 endmodule
+`endif 
