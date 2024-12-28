@@ -25,7 +25,7 @@ reg [127:0]round_key_reg , round_key_new  ;
 reg round_key_we ;
 reg [127:0]old_round_key , old_round_key_new ;
 reg old_round_key_we ;
-
+reg done = 0 ;
 reg [31:0]byteSubIn ; 
 wire [31:0]byteSubOut , roundCfOut;
 byteSub bs_inst(.in(byteSubIn), .out(byteSubOut)) ;
@@ -79,7 +79,7 @@ always @ *
 
      case(round_ctrl_reg) 
      CTRL_IDLE :  begin
-          if(en)begin
+          if(en && ~done)begin
                
                round_key_new = initial_key ;
                round_key_we  = 1 ;
@@ -90,6 +90,7 @@ always @ *
                key_reg[128*(round_nm_reg+1) -1 -: 128 ] = initial_key;
 
                round_nm_inc = 1 ;
+               
                round_ctrl_new = CTRL_MAIN ;
                round_ctrl_we = 1 ; 
                circ = {old_round_key[23:0] , old_round_key[31 -: 8]} ;
@@ -111,7 +112,13 @@ always @ *
           old_round_key_we = 1 ;
 
           key_reg[128*(round_nm_reg+1) -1 -: 128 ] = round_key_new;
-
+          if(round_nm_reg <= 9)begin
+               round_ctrl_new = CTRL_MAIN ;
+          end
+          else begin
+               round_ctrl_new = CTRL_IDLE ;
+               done = 1 ;
+          end
           round_ctrl_new = (round_nm_reg <= 9) ? CTRL_MAIN : CTRL_IDLE ;
           circ = {old_round_key[23:0] , old_round_key[31 -: 8]} ;
           byteSubIn = circ ;
