@@ -1,6 +1,6 @@
 `include "BS.v"
 `include "keyExpan.v"
-module try (
+module encrypt (
      input clk , reset_n , start , en , 
      input [127:0]plaintext , initial_key ,
      output reg [127:0]cyphertext

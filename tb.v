@@ -1,4 +1,4 @@
-`include "try.v"
+`include "encrypt.v"
 module tb ( );
 
 reg clk;
@@ -8,7 +8,7 @@ reg [127:0] plaintext;
 reg [127:0] initial_key;
 wire [127:0] cyphertext;
 
-try uut(clk , reset_n, start , en , plaintext , initial_key , cyphertext ) ;
+encrypt uut(clk , reset_n, start , en , plaintext , initial_key , cyphertext ) ;
 
 reg [127:0] test_plaintext = 128'h3243f6a8885a308d313198a2e0370734; // Example plaintext
 reg [127:0] test_key = 128'h2b7e151628aed2a6abf7158809cf4f3c;    // Example AES key
@@ -27,7 +27,7 @@ initial begin
      initial_key = test_key;
      #12 en = 1 ;
      #10 reset_n = 1 ;start = 1 ;
-     #150 
+     #115 
      $stop ;
 
 end
